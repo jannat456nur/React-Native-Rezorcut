@@ -5,7 +5,21 @@ import Button from "../components/button";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { AntDesign } from "@expo/vector-icons";
 import { FontAwesome } from "@expo/vector-icons";
+// import { FontAwesome } from '@expo/vector-icons';
 import Button2 from "../components/button2";
+import 'expo-dev-client';
+import { GoogleAuthProvider,getAuth, signInWithPopup } from "firebase/auth";
+import initializeAuth from "../firebase/firebase.init";
+
+
+
+
+initializeAuth()
+
+
+
+
+
 
 export default function LoginRoutes({ navigation }) {
   const navigateToSignUp = () => {
@@ -20,6 +34,27 @@ export default function LoginRoutes({ navigation }) {
   const navigateToSignUpWithApple = () => {
     navigation.navigate("Signinwithapple");
   };
+  const handleSigninWithApple = ()=>{
+
+  }
+ 
+ const provider = new GoogleAuthProvider();
+    const auth = getAuth();
+  const handleGooglesignIn = () =>{
+   
+    signInWithPopup(auth, provider)
+    .then((result) => {
+     
+
+      const user = result.user;
+      // ...
+    }).catch((error) => {
+      // Handle Errors here.
+      const errorCode = error.code;
+      const errorMessage = error.message;
+     
+    });
+  }
 
   return (
     <>
@@ -36,7 +71,7 @@ export default function LoginRoutes({ navigation }) {
         />
       </View>
       <View>
-        <Text style={{ fontSize: 58, marginTop: -150, alignSelf: "center" }}>
+        <Text style={{ fontSize: 58, marginTop: -150, alignSelf: "center",fontWeight:'800' }}>
           Let's you in
         </Text>
       </View>
@@ -45,7 +80,7 @@ export default function LoginRoutes({ navigation }) {
         <Input placeholder="Email" onChangeText={(text) => setEmail(text)} />
         <Input placeholder="Email" onChangeText={(text) => setEmail(text)} /> */}
 
-        <Pressable
+        {/* <Pressable
           onPress={() => {
             navigation.navigate("Signinwithmail");
           }}
@@ -61,6 +96,23 @@ export default function LoginRoutes({ navigation }) {
               "Continue with email",
             ]}
           />
+        </Pressable> */}
+
+        <Pressable
+          onPress={() => {
+            navigation.navigate("Signinwithphone");
+          }}
+          style={{ marginTop: 20, alignSelf: "center" }}
+        >
+          <Button2
+            onPress={() => {
+              navigation.navigate("Signinwithphone");
+            }}
+            title={[
+                         
+              "Continue with phone",
+            ]}
+          />
         </Pressable>
 
         <Pressable
@@ -69,15 +121,17 @@ export default function LoginRoutes({ navigation }) {
           }}
           style={{ marginTop: 20, alignSelf: "center" }}
         >
+        
           <Button2
             onPress={() => {
               navigation.navigate("Signinwithgoogle");
             }}
             title={[
-              <AntDesign name="google" size={24} color="#4285F4" />,
+            
 
               "Continue with Google",
             ]}
+        
           />
         </Pressable>
 
@@ -85,12 +139,14 @@ export default function LoginRoutes({ navigation }) {
           // onPress={() => {
           //   navigation.navigate("Signinwithapple");
           // }}
+          // onPress={handleSigninWithApple}
           style={{ marginTop: 20, alignSelf: "center" }}
         >
           <Button2
-            onPress={() => {
-              navigation.navigate("Signinwithapple");
-            }}
+            // onPress={() => {
+            //   navigation.navigate("Signinwithapple");
+            // }}
+            onPress={handleGooglesignIn}
             title={[
               <FontAwesome name="apple" size={24} color="black" />,
               "Continue with Apple",
@@ -104,7 +160,12 @@ export default function LoginRoutes({ navigation }) {
         </Text>
       </View>
       <View style={{ marginTop: 20, alignSelf: "center" }}>
-        <Button title={"Sign up with password"} />
+        <Pressable>
+        <Button onPress={() => {
+            navigation.navigate("Signinwithmail");
+          }} title={"Sign up with password"} />
+        </Pressable>
+
       </View>
       <Pressable
         onPress={() => {

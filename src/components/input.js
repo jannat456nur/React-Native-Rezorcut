@@ -1,7 +1,18 @@
 import { StyleSheet, Text, TextInput, View } from "react-native";
 import React from "react";
+import { EvilIcons } from "@expo/vector-icons";
 
-export default function Input({ placeholder,multiline,numberOfLines, secureTextEntry=false, onChangeText,autoCapitalize,value }) {
+
+export default function Input({
+  placeholder,
+  multiline,
+  numberOfLines,
+  secureTextEntry = false,
+  onChangeText,
+  autoCapitalize,
+  value,
+  title
+}) {
   return (
     <TextInput
       style={styles.input}
@@ -13,19 +24,20 @@ export default function Input({ placeholder,multiline,numberOfLines, secureTextE
       autoCapitalize={autoCapitalize}
       numberOfLines={numberOfLines}
       multiline={multiline}
+
     />
   );
 }
 
 const styles = StyleSheet.create({
   input: {
-    height: 48,
-    width:350,
+    height: 55,
+    width: 380,
     borderColor: "grey",
     marginBottom: 20,
-    borderRadius:10,
-    borderWidth:1,
-    padding:15
-    
+    borderRadius: 10,
+    borderWidth: 1,
+    padding: 15,
+    alignSelf: "center",
   },
 });

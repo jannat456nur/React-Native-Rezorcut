@@ -1,5 +1,6 @@
-import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
+import { View, Text, TouchableOpacity, StyleSheet, TextInput } from "react-native";
 import React from "react";
+import { EvilIcons } from "@expo/vector-icons";
 
 export default function Button2({ title, onPress, customStyles }) {
   return (

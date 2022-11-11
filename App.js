@@ -10,6 +10,7 @@ import SigninWithApple from "./src/screens/signinWithApple";
 import SigninWithGoogle from "./src/screens/signinWithGoogle";
 import SigninWithMail from "./src/screens/signinWithMail";
 import Signup from "./src/screens/signup";
+import SignInWithphone from "./src/screens/signInWithphone";
 
 
 
@@ -61,9 +62,10 @@ export default function App() {
         <>
           <Stack.Screen name="Signin" component={LoginRoutes}></Stack.Screen>
           <Stack.Screen name="Signup" component={Signup}></Stack.Screen>
-          <Stack.Screen name="Signinwithmail" component={SigninWithMail}></Stack.Screen>
+          <Stack.Screen name="Signinwithphone" component={SignInWithphone}></Stack.Screen>
           <Stack.Screen name="Signinwithgoogle" component={SigninWithGoogle}></Stack.Screen>
           <Stack.Screen name="Signinwithapple" component={SigninWithApple}></Stack.Screen>
+          <Stack.Screen name="Signinwithmail" component={SigninWithMail}></Stack.Screen>
         </>
       )}
     </Stack.Navigator>
@@ -72,6 +74,9 @@ export default function App() {
 }
 
 const styles = StyleSheet.create({
+  root:{
+         backgroundColor:'#fff'
+  },
   container: {
     flex: 1,
     backgroundColor: "#fff",

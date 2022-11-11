@@ -17,13 +17,16 @@ const styles = StyleSheet.create({
     width: 350,
     height: 55,
     backgroundColor: "#FB9400",
-    justifyContent: "center",
-    alignItems: "center",
+    alignSelf:'center',
+    // marginTop:40
     
   },
   title: {
     fontSize: 16,
     color:'white',
-    fontSize:20
+    fontSize:20,
+    alignSelf:'center',
+    marginTop:10,
+    justifyContent:'center'
   },
 });
