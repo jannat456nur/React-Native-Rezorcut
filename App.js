@@ -11,6 +11,7 @@ import SigninWithGoogle from "./src/screens/signinWithGoogle";
 import SigninWithMail from "./src/screens/signinWithMail";
 import Signup from "./src/screens/signup";
 import SignInWithphone from "./src/screens/signInWithphone";
+import Profile from "./src/screens/profile";
 
 
 
@@ -61,6 +62,7 @@ export default function App() {
       ) : (
         <>
           <Stack.Screen name="Signin" component={LoginRoutes}></Stack.Screen>
+          {/* <Stack.Screen name="profile" component={Profile}></Stack.Screen> */}
           <Stack.Screen name="Signup" component={Signup}></Stack.Screen>
           <Stack.Screen name="Signinwithphone" component={SignInWithphone}></Stack.Screen>
           <Stack.Screen name="Signinwithgoogle" component={SigninWithGoogle}></Stack.Screen>

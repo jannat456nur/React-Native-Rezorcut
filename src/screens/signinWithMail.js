@@ -41,7 +41,7 @@ export default function SigninWithMail() {
             value={agree}
             onValueChange={() => setAgree(!agree)}
             color={agree ? "#FB9400" : undefined}
-            style={{ alignSelf: "center", marginRight: 140, marginBottom: 20,marginTop:30 }}
+            style={{ alignSelf: "center", marginRight: 140, marginBottom: 20,marginTop:0 }}
           />
           <Text
             style={{ marginTop: -38, alignSelf: "center", marginBottom: 80 }}
@@ -74,7 +74,7 @@ export default function SigninWithMail() {
         >
           <SmallButton
             title={[
-              <MaterialCommunityIcons name="email" size={48} color="#DB4437" />,
+              <FontAwesome name="phone" size={48} color="black" />,
             ]}
           />
           <View  style={{

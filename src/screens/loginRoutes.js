@@ -14,6 +14,7 @@ import initializeAuth from "../firebase/firebase.init";
 
 
 
+
 initializeAuth()
 
 
@@ -109,8 +110,8 @@ export default function LoginRoutes({ navigation }) {
               navigation.navigate("Signinwithphone");
             }}
             title={[
-                         
-              "Continue with phone",
+              <FontAwesome name="phone" size={24} color="black" />,       
+              "     Continue with phone",
             ]}
           />
         </Pressable>
@@ -128,8 +129,8 @@ export default function LoginRoutes({ navigation }) {
             }}
             title={[
             
-
-              "Continue with Google",
+<AntDesign name="google" size={24} color="#4285F4" />,
+              "   Continue with Google",
             ]}
         
           />
@@ -148,8 +149,8 @@ export default function LoginRoutes({ navigation }) {
             // }}
             onPress={handleGooglesignIn}
             title={[
-              <FontAwesome name="apple" size={24} color="black" />,
-              "Continue with Apple",
+              <FontAwesome name="apple" size={24} color="black"/>,
+              "   Continue with Apple",
             ]}
           />
         </Pressable>
