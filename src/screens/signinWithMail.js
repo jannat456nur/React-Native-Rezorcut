@@ -12,6 +12,8 @@ import { AntDesign } from "@expo/vector-icons";
 import { FontAwesome } from "@expo/vector-icons";
 
 export default function SigninWithMail() {
+  
+
   const [agree, setAgree] = useState(false);
   return (
     <>

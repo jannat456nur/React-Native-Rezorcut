@@ -1,5 +1,5 @@
 import { StyleSheet, Text, TextInput, View } from "react-native";
-import React from "react";
+import React, { useState } from "react";
 import { EvilIcons } from "@expo/vector-icons";
 
 
@@ -13,6 +13,17 @@ export default function Input({
   value,
   title
 }) {
+
+
+// const [bgColor,setbgColor] = useState("primary")
+
+// const customOnFocus = () =>{
+//   props?onFocus:
+//   setbgColor(secondary)
+// }
+
+
+
   return (
     <TextInput
       style={styles.input}
@@ -24,6 +35,9 @@ export default function Input({
       autoCapitalize={autoCapitalize}
       numberOfLines={numberOfLines}
       multiline={multiline}
+      // background={bgColor}
+      title={title}
+     
 
     />
   );

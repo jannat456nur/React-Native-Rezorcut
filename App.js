@@ -12,6 +12,9 @@ import SigninWithMail from "./src/screens/signinWithMail";
 import Signup from "./src/screens/signup";
 import SignInWithphone from "./src/screens/signInWithphone";
 import Profile from "./src/screens/profile";
+import DropdownComponent from "./src/screens/dropdown";
+import Datepicker from "./src/screens/datepicker";
+
 
 
 
@@ -61,8 +64,10 @@ export default function App() {
         </>
       ) : (
         <>
-          <Stack.Screen name="Signin" component={LoginRoutes}></Stack.Screen>
-          {/* <Stack.Screen name="profile" component={Profile}></Stack.Screen> */}
+          {/* <Stack.Screen name="Signin" component={LoginRoutes}></Stack.Screen> */}
+          <Stack.Screen name="datepicker" component={Datepicker}></Stack.Screen>
+          <Stack.Screen name="dropdoen" component={DropdownComponent}></Stack.Screen>
+          <Stack.Screen name="profile" component={Profile}></Stack.Screen>
           <Stack.Screen name="Signup" component={Signup}></Stack.Screen>
           <Stack.Screen name="Signinwithphone" component={SignInWithphone}></Stack.Screen>
           <Stack.Screen name="Signinwithgoogle" component={SigninWithGoogle}></Stack.Screen>
@@ -77,11 +82,11 @@ export default function App() {
 
 const styles = StyleSheet.create({
   root:{
-         backgroundColor:'#fff'
+         backgroundColor:'#white'
   },
   container: {
     flex: 1,
-    backgroundColor: "#fff",
+    backgroundColor: "white",
     alignItems: "center",
     justifyContent: "center",
   },
