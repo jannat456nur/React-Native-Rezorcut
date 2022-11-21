@@ -37,8 +37,8 @@ export default function Profile() {
         <Image
           //   resizeMethod="contain"
           style={{
-            width: 180,
-            height: 180,
+            width: '40%',
+            height: 160,
             backgroundColor: "#fff",
             borderRadius: 300,
             alignSelf: "center",
@@ -47,6 +47,9 @@ export default function Profile() {
           }}
           source={require("../../assets/user.png")}
         />
+        <View>
+          <Image style={{marginTop:'-20%',marginLeft:'60%',width:'10%'}} source={require('../../assets/edit.png')}/>
+        </View>
       </View>
       <View>
         <Input placeholder={'Full name'} title={'name'}/>

@@ -14,6 +14,10 @@ import SignInWithphone from "./src/screens/signInWithphone";
 import Profile from "./src/screens/profile";
 import DropdownComponent from "./src/screens/dropdown";
 import Datepicker from "./src/screens/datepicker";
+import Signin from "./src/screens/signin";
+import Customtab from "./src/screens/customtab";
+import Frontpage1 from "./src/screens/frontpage1";
+import Welcome from "./src/screens/welcome";
 
 
 
@@ -36,6 +40,9 @@ const Stack = createNativeStackNavigator();
 export default function App() {
   // const [user, setUser] = useState(null);
   const user = false; //not authenticated
+
+
+
 
 
   // useEffect(()=>{
@@ -64,10 +71,14 @@ export default function App() {
         </>
       ) : (
         <>
-          {/* <Stack.Screen name="Signin" component={LoginRoutes}></Stack.Screen> */}
-          <Stack.Screen name="datepicker" component={Datepicker}></Stack.Screen>
-          <Stack.Screen name="dropdoen" component={DropdownComponent}></Stack.Screen>
-          <Stack.Screen name="profile" component={Profile}></Stack.Screen>
+        {/* <Stack.Screen name="test0" component={Customtab}></Stack.Screen> */}
+        <Stack.Screen name="welcome" component={Welcome}></Stack.Screen>
+        <Stack.Screen name="frontpage" component={Frontpage1}></Stack.Screen>
+          <Stack.Screen name="test" component={LoginRoutes}></Stack.Screen>
+          <Stack.Screen name="Signin" component={Signin}></Stack.Screen>
+          {/* <Stack.Screen name="datepicker" component={Datepicker}></Stack.Screen> */}
+          {/* <Stack.Screen name="dropdoen" component={DropdownComponent}></Stack.Screen> */}
+          {/* <Stack.Screen name="profile" component={Profile}></Stack.Screen> */}
           <Stack.Screen name="Signup" component={Signup}></Stack.Screen>
           <Stack.Screen name="Signinwithphone" component={SignInWithphone}></Stack.Screen>
           <Stack.Screen name="Signinwithgoogle" component={SigninWithGoogle}></Stack.Screen>

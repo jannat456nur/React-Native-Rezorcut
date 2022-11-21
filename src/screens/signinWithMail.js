@@ -11,9 +11,13 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { AntDesign } from "@expo/vector-icons";
 import { FontAwesome } from "@expo/vector-icons";
 
-export default function SigninWithMail() {
-  
 
+
+
+
+export default function SigninWithMail({navigation}) {
+  const navigateToSignIn = () => {
+    navigation.navigate("Signup");}
   const [agree, setAgree] = useState(false);
   return (
     <>
@@ -104,9 +108,9 @@ export default function SigninWithMail() {
 
       <View>
       <Pressable
-        // onPress={() => {
-        //   navigation.navigate("Signup");
-        // }}
+        onPress={() => {
+          navigation.navigate("Signin");
+        }}
         style={{ marginTop: 20, alignSelf: "center" }}
       >
         <Text>

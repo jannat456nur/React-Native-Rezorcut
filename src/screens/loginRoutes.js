@@ -7,20 +7,15 @@ import { AntDesign } from "@expo/vector-icons";
 import { FontAwesome } from "@expo/vector-icons";
 // import { FontAwesome } from '@expo/vector-icons';
 import Button2 from "../components/button2";
-import 'expo-dev-client';
-import { GoogleAuthProvider,getAuth, signInWithPopup } from "firebase/auth";
+import "expo-dev-client";
+import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import initializeAuth from "../firebase/firebase.init";
+// import 'firebase' from 'firebase/compar/app';
+import firebase from 'firebase/compat/app';
+import 'firebase/compat/auth';
+import 'firebase/compat/firestore';
 
-
-
-
-
-initializeAuth()
-
-
-
-
-
+initializeAuth();
 
 export default function LoginRoutes({ navigation }) {
   const navigateToSignUp = () => {
@@ -35,27 +30,32 @@ export default function LoginRoutes({ navigation }) {
   const navigateToSignUpWithApple = () => {
     navigation.navigate("Signinwithapple");
   };
-  const handleSigninWithApple = ()=>{
+  const handleSigninWithApple = () => {};
 
-  }
- 
- const provider = new GoogleAuthProvider();
-    const auth = getAuth();
-  const handleGooglesignIn = () =>{
-   
+  
+  const auth = getAuth();
+  const provider = new GoogleAuthProvider();
+
+  const handleGooglesignIn = () => {
     signInWithPopup(auth, provider)
-    .then((result) => {
-     
-
-      const user = result.user;
-      // ...
-    }).catch((error) => {
-      // Handle Errors here.
-      const errorCode = error.code;
-      const errorMessage = error.message;
-     
-    });
-  }
+  .then((result) => {
+    // This gives you a Google Access Token. You can use it to access the Google API.
+    const credential = GoogleAuthProvider.credentialFromResult(result);
+    const token = credential.accessToken;
+    // The signed-in user info.
+    const user = result.user;
+    // ...
+  }).catch((error) => {
+    // Handle Errors here.
+    const errorCode = error.code;
+    const errorMessage = error.message;
+    // The email of the user's account used.
+    const email = error.customData.email;
+    // The AuthCredential type that was used.
+    const credential = GoogleAuthProvider.credentialFromError(error);
+    // ...
+  });
+  };
 
   return (
     <>
@@ -72,11 +72,18 @@ export default function LoginRoutes({ navigation }) {
         />
       </View>
       <View>
-        <Text style={{ fontSize: 58, marginTop: -150, alignSelf: "center",fontWeight:'800' }}>
+        <Text
+          style={{
+            fontSize: 58,
+            marginTop: -150,
+            alignSelf: "center",
+            fontWeight: "800",
+          }}
+        >
           Let's you in
         </Text>
       </View>
-      <View style={{ marginTop: -60, alignSelf: "center" }}>
+      <View style={{ marginTop: '-18%', alignSelf: "center" }}>
         {/* <Input placeholder="Email" onChangeText={(text) => setEmail(text)} />
         <Input placeholder="Email" onChangeText={(text) => setEmail(text)} />
         <Input placeholder="Email" onChangeText={(text) => setEmail(text)} /> */}
@@ -103,14 +110,14 @@ export default function LoginRoutes({ navigation }) {
           onPress={() => {
             navigation.navigate("Signinwithphone");
           }}
-          style={{ marginTop: 20, alignSelf: "center" }}
+          style={{ marginTop: '8%', alignSelf: "center" }}
         >
           <Button2
             onPress={() => {
               navigation.navigate("Signinwithphone");
             }}
             title={[
-              <FontAwesome name="phone" size={24} color="black" />,       
+              <FontAwesome name="phone" size={24} color="black" />,
               "     Continue with phone",
             ]}
           />
@@ -120,19 +127,17 @@ export default function LoginRoutes({ navigation }) {
           onPress={() => {
             navigation.navigate("Signinwithgoogle");
           }}
-          style={{ marginTop: 20, alignSelf: "center" }}
+          style={{ marginTop: '6%', alignSelf: "center" }}
         >
-        
           <Button2
-            onPress={() => {
-              navigation.navigate("Signinwithgoogle");
-            }}
+            // onPress={() => {
+            //   navigation.navigate("Signinwithgoogle");
+            // }}
+            onPress={handleGooglesignIn}
             title={[
-            
-<AntDesign name="google" size={24} color="#4285F4" />,
+              <AntDesign name="google" size={24} color="#4285F4" />,
               "   Continue with Google",
             ]}
-        
           />
         </Pressable>
 
@@ -141,7 +146,7 @@ export default function LoginRoutes({ navigation }) {
           //   navigation.navigate("Signinwithapple");
           // }}
           // onPress={handleSigninWithApple}
-          style={{ marginTop: 20, alignSelf: "center" }}
+          style={{ marginTop: '6%', alignSelf: "center" }}
         >
           <Button2
             // onPress={() => {
@@ -149,35 +154,49 @@ export default function LoginRoutes({ navigation }) {
             // }}
             onPress={handleGooglesignIn}
             title={[
-              <FontAwesome name="apple" size={24} color="black"/>,
+              <FontAwesome name="apple" size={24} color="black" />,
               "   Continue with Apple",
             ]}
           />
         </Pressable>
       </View>
       <View>
-        <Text style={{ color: "grey", marginTop: 20, alignSelf: "center" }}>
-          __________________________________or________________________________
+        <Text style={{ color: "grey", marginTop: '4%', alignSelf: "center" }}>
+          __________________________________     or    ________________________________
+          
         </Text>
+        {/* <View>
+          <View>
+            <Text style={{paddingHorizontal:'3%',marginLeft:'3%'}}>
+              
+              _____________________________________________________________________
+            </Text>
+          </View>
+          <View>
+            <Text style={{paddingVertical:'2%', paddingHorizontal:'10%' ,backgroundColor:'pink',  right:'30%' ,position:'absolute',marginTop:'-2%',marginLeft:'45%'}}>or</Text>
+          </View>
+        </View> */}
       </View>
-      <View style={{ marginTop: 20, alignSelf: "center" }}>
+      <View style={{ marginTop: '5%', alignSelf: "center" }}>
         <Pressable>
-        <Button onPress={() => {
-            navigation.navigate("Signinwithmail");
-          }} title={"Sign up with password"} />
+          <Button
+            onPress={() => {
+              navigation.navigate("Signinwithmail");
+            }}
+            title={"Sign up with password"}
+          />
         </Pressable>
-
       </View>
       <Pressable
         onPress={() => {
           navigation.navigate("Signup");
         }}
-        style={{ marginTop: 20, alignSelf: "center" }}
+        style={{ marginTop: '5%', alignSelf: "center" }}
       >
         <Text>
           Don't have an account?{""}
           <Text
-            style={{ color: "#FB9400", fontWeight: "bold", marginLeft: 20 }}
+            style={{ color: "#FB9400", fontWeight: "bold", marginLeft: '6%' }}
           >
             Sign up
           </Text>
