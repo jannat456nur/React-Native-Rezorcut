@@ -18,6 +18,7 @@ import Signin from "./src/screens/signin";
 import Customtab from "./src/screens/customtab";
 import Frontpage1 from "./src/screens/frontpage1";
 import Welcome from "./src/screens/welcome";
+import Slider from "./src/screens/slider";
 
 
 
@@ -73,6 +74,7 @@ export default function App() {
         <>
         {/* <Stack.Screen name="test0" component={Customtab}></Stack.Screen> */}
         <Stack.Screen name="welcome" component={Welcome}></Stack.Screen>
+        <Stack.Screen name="slider" component={Slider}></Stack.Screen>
         <Stack.Screen name="frontpage" component={Frontpage1}></Stack.Screen>
           <Stack.Screen name="test" component={LoginRoutes}></Stack.Screen>
           <Stack.Screen name="Signin" component={Signin}></Stack.Screen>

@@ -1,22 +1,47 @@
-import { View, Text, ImageBackground, StyleSheet, Image } from "react-native";
+import {
+  View,
+  Text,
+  ImageBackground,
+  StyleSheet,
+  Image,
+  Pressable,
+} from "react-native";
 import React from "react";
 
-export default function Welcome() {
+export default function Welcome({navigation}) {
+
+    const navigateToslider = () => {
+        navigation.navigate("slider");}
+    
   return (
     <View>
-      <ImageBackground
-        style={styles.bgimage}
-        resizeMode="cover"
-        source={require("../../assets/welcomepage.jpg")}
+      <Pressable
+       onPress={() => {
+        navigation.navigate("slider");
+      }}
+      
       >
-        <Text style={styles.text1}>Welcome to</Text>
-        <Image style={styles.image} source={require("../../assets/wave.png")} />
-        <Text style={styles.text2}>Casca</Text>
+        <ImageBackground
+        
+          style={styles.bgimage}
+          resizeMode="cover"
+          source={require("../../assets/welcomepage.jpg")}
+        >
+          <Text style={styles.text1}>Welcome to</Text>
+          <Image
+            style={styles.image}
+            source={require("../../assets/wave.png")}
+          />
+          <Text style={styles.text2}>Casca</Text>
 
-        <Text style={styles.text3}>The  best barber & salon app in this</Text>
+          <Text style={styles.text3}>The best barber & salon app in this</Text>
 
-        <Text style={styles.text3}> century for your good looks and beauty</Text>
-      </ImageBackground>
+          <Text style={styles.text3}>
+            {" "}
+            century for your good looks and beauty.
+          </Text>
+        </ImageBackground>
+      </Pressable>
     </View>
   );
 }
@@ -45,10 +70,10 @@ const styles = StyleSheet.create({
     marginTop: "-5%",
     paddingHorizontal: "6%",
   },
-  text3:{
-    color:'#fff',
-    fontSize:18,
-    fontWeight:'500',
+  text3: {
+    color: "#fff",
+    fontSize: 18,
+    fontWeight: "500",
     paddingHorizontal: "6%",
-  }
+  },
 });
