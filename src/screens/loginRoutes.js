@@ -1,23 +1,20 @@
-import { View, Text, Image, Pressable } from "react-native";
+import { View, Text, Image, Pressable, StyleSheet } from "react-native";
 import React from "react";
-import Input from "../components/input";
 import Button from "../components/button";
-import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { AntDesign } from "@expo/vector-icons";
 import { FontAwesome } from "@expo/vector-icons";
-// import { FontAwesome } from '@expo/vector-icons';
 import Button2 from "../components/button2";
-import "expo-dev-client";
 import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import initializeAuth from "../firebase/firebase.init";
-// import 'firebase' from 'firebase/compar/app';
-import firebase from 'firebase/compat/app';
+import "expo-dev-client";
 import 'firebase/compat/auth';
 import 'firebase/compat/firestore';
+import { colors } from "../theme/colors";
+
 
 initializeAuth();
 
-export default function LoginRoutes({ navigation }) {
+export default function LoginRoutes({ navigation,h1 }) {
   const navigateToSignUp = () => {
     navigation.navigate("signup");
   };
@@ -63,49 +60,19 @@ export default function LoginRoutes({ navigation }) {
         <Image
           source={require("../../assets/logo.png")}
           resizeMode="contain"
-          style={{
-            width: 300,
-            height: 300,
-            alignSelf: "center",
-            marginBottom: 100,
-          }}
+          style={styles.image}
         />
       </View>
       <View>
         <Text
-          style={{
-            fontSize: 58,
-            marginTop: -150,
-            alignSelf: "center",
-            fontWeight: "800",
-          }}
+          style={styles.title}
+        
+
         >
           Let's you in
         </Text>
       </View>
       <View style={{ marginTop: '-18%', alignSelf: "center" }}>
-        {/* <Input placeholder="Email" onChangeText={(text) => setEmail(text)} />
-        <Input placeholder="Email" onChangeText={(text) => setEmail(text)} />
-        <Input placeholder="Email" onChangeText={(text) => setEmail(text)} /> */}
-
-        {/* <Pressable
-          onPress={() => {
-            navigation.navigate("Signinwithmail");
-          }}
-          style={{ marginTop: 20, alignSelf: "center" }}
-        >
-          <Button2
-            onPress={() => {
-              navigation.navigate("Signinwithmail");
-            }}
-            title={[
-              <MaterialCommunityIcons name="email" size={24} color="#DB4437" />,
-              // <Image source={require('../../assets/google.jpg')} resizeMethod="auto" style={{backgroundColor:'black'}}/>,
-              "Continue with email",
-            ]}
-          />
-        </Pressable> */}
-
         <Pressable
           onPress={() => {
             navigation.navigate("Signinwithphone");
@@ -130,9 +97,6 @@ export default function LoginRoutes({ navigation }) {
           style={{ marginTop: '6%', alignSelf: "center" }}
         >
           <Button2
-            // onPress={() => {
-            //   navigation.navigate("Signinwithgoogle");
-            // }}
             onPress={handleGooglesignIn}
             title={[
               <AntDesign name="google" size={24} color="#4285F4" />,
@@ -142,16 +106,9 @@ export default function LoginRoutes({ navigation }) {
         </Pressable>
 
         <Pressable
-          // onPress={() => {
-          //   navigation.navigate("Signinwithapple");
-          // }}
-          // onPress={handleSigninWithApple}
           style={{ marginTop: '6%', alignSelf: "center" }}
         >
           <Button2
-            // onPress={() => {
-            //   navigation.navigate("Signinwithapple");
-            // }}
             onPress={handleGooglesignIn}
             title={[
               <FontAwesome name="apple" size={24} color="black" />,
@@ -165,6 +122,7 @@ export default function LoginRoutes({ navigation }) {
           __________________________________     or    ________________________________
           
         </Text>
+
         {/* <View>
           <View>
             <Text style={{paddingHorizontal:'3%',marginLeft:'3%'}}>
@@ -196,7 +154,7 @@ export default function LoginRoutes({ navigation }) {
         <Text>
           Don't have an account?{""}
           <Text
-            style={{ color: "#FB9400", fontWeight: "bold", marginLeft: '6%' }}
+            style={{ color:colors.orange, fontWeight: "bold", marginLeft: '6%' }}
           >
             Sign up
           </Text>
@@ -205,3 +163,18 @@ export default function LoginRoutes({ navigation }) {
     </>
   );
 }
+const styles = StyleSheet.create({
+image:{
+    width: 300,
+    height: 300,
+    alignSelf: "center",
+    marginBottom: 100,
+},
+title:{
+    fontSize: 58,
+    marginTop: -150,
+    alignSelf: "center",
+    fontWeight: "800",
+    
+}
+});

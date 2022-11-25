@@ -1,13 +1,9 @@
-import { View, Text, TextInput, Pressable } from "react-native";
+import { View, Text, Pressable, StyleSheet } from "react-native";
 import React, { useState } from "react";
 import Input from "../components/input";
-// import { MaterialCommunityIcons } from "@expo/vector-icons";
 import Checkbox from "expo-checkbox";
 import Button from "../components/button";
 import SmallButton from "../components/smallButton";
-import Test from "../components/test";
-import Button2 from "../components/button2";
-import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { AntDesign } from "@expo/vector-icons";
 import { FontAwesome } from "@expo/vector-icons";
 
@@ -19,22 +15,18 @@ export default function SigninWithMail({navigation}) {
   const navigateToSignIn = () => {
     navigation.navigate("Signup");}
   const [agree, setAgree] = useState(false);
+
+  
   return (
     <>
       <View>
         <Text
-          style={{ fontSize: 58, alignSelf: "flex-start", fontWeight: "700",paddingHorizontal:20 }}
+          style={styles.title1}
         >
           Create Your
         </Text>
         <Text
-          style={{
-            fontSize: 58,
-            alignSelf: "flex-start",
-            marginTop: -10,
-            fontWeight: "700",
-            paddingHorizontal:20
-          }}
+          style={styles.title2}
         >
           Account
         </Text>
@@ -47,10 +39,10 @@ export default function SigninWithMail({navigation}) {
             value={agree}
             onValueChange={() => setAgree(!agree)}
             color={agree ? "#FB9400" : undefined}
-            style={{ alignSelf: "center", marginRight: 140, marginBottom: 20,marginTop:0 }}
+            style={styles.checkbox}
           />
           <Text
-            style={{ marginTop: -38, alignSelf: "center", marginBottom: 80 }}
+            style={styles.checkboxtext}
           >
             Remember me
           </Text>
@@ -71,34 +63,19 @@ export default function SigninWithMail({navigation}) {
         {/* <SmallButton title={'signin'}/> */}
         {/* <Test name="email" icon="user"/> */}
         <View
-          style={{
-            display: "flex",
-            justifyContent: "space-between",
-            marginTop: 30,
-            marginLeft:40
-          }}
+         style={styles.view1}
         >
           <SmallButton
             title={[
               <FontAwesome name="phone" size={48} color="black" />,
             ]}
           />
-          <View  style={{
-            display: "flex",
-            justifyContent: "space-between",
-            marginTop: -75,
-            marginLeft:115
-          }}>
+          <View   style={styles.view2}>
             <SmallButton
               title={[<AntDesign name="google" size={48} color="#4285F4" />]}
             />
           </View>
-         <View  style={{
-            display: "flex",
-            justifyContent: "space-between",
-            marginTop: -75,
-            marginLeft:230
-          }}>
+         <View  style={styles.view3}>
          <SmallButton
             title={[<FontAwesome name="apple" size={48} color="black" />]}
           />
@@ -116,7 +93,7 @@ export default function SigninWithMail({navigation}) {
         <Text>
           Already have an account?{""}
           <Text
-            style={{ color: "#FB9400", fontWeight: "bold", marginLeft: 20 }}
+            style={styles.button}
           >
             Sign in
           </Text>
@@ -126,3 +103,53 @@ export default function SigninWithMail({navigation}) {
     </>
   );
 }
+const styles = StyleSheet.create({
+  title1:{
+    fontSize: 58,
+    alignSelf: "flex-start",
+    fontWeight: "700",
+    paddingHorizontal:20
+  } ,
+  title2:{
+    fontSize: 58,
+    alignSelf: "flex-start",
+    marginTop: -10,
+    fontWeight: "700",
+    paddingHorizontal:20
+  },
+  checkbox:{
+    alignSelf: "center",
+    marginRight: 140, 
+    marginBottom: 20,
+    marginTop:0 
+  },
+  checkboxtext:{
+    marginTop: -38, 
+    alignSelf: "center",
+    marginBottom: 80 
+  },
+  view1:{
+    display: "flex",
+    justifyContent: "space-between",
+    marginTop: 30,
+    marginLeft:40
+  },
+  view2:{
+    display: "flex",
+    justifyContent: "space-between",
+    marginTop: -75,
+    marginLeft:115
+  },
+  view3:{
+    display: "flex",
+    justifyContent: "space-between",
+    marginTop: -75,
+    marginLeft:230
+  },
+  button:{
+    color: "#FB9400",
+    fontWeight: "bold",
+    marginLeft: 20
+  }
+});
+

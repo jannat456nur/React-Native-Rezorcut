@@ -11,13 +11,13 @@ import React from "react";
 export default function Welcome({navigation}) {
 
     const navigateToslider = () => {
-        navigation.navigate("slider");}
+        navigation.navigate("onboarding");}
     
   return (
     <View>
       <Pressable
        onPress={() => {
-        navigation.navigate("slider");
+        navigation.navigate("onboarding");
       }}
       
       >

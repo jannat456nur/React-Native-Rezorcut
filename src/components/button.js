@@ -1,5 +1,6 @@
 import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
 import React from "react";
+import { colors } from "../theme/colors";
 
 export default function Button({ title, onPress, customStyles }) {
   return (
@@ -16,7 +17,7 @@ const styles = StyleSheet.create({
     borderRadius: 50,
     width: 350,
     height: 55,
-    backgroundColor: "#FB9400",
+    backgroundColor:colors.orange,
     alignSelf:'center',
     // marginTop:40
     
